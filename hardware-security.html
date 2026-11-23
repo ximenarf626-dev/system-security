@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Security | CatSecurity</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #30343a;
+      background: #f1f3f6;
+      line-height: 1.5;
+    }
+
+    /* Navigation matches the CatSecurity homepage */
+    .navbar {
+      width: 100%;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1e3a5f;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 13px 24px;
+    }
+
+    .navbar a:hover { text-decoration: underline; }
+
+    /* Intro banner */
+    .hero {
+      background: #dce7f2;
+      text-align: center;
+      padding: 42px 22px 38px;
+    }
+
+    .hero h1 {
+      color: #1e3a5f;
+      font-size: 36px;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 17px;
+    }
+
+    main {
+      width: min(100% - 40px, 900px);
+      margin: 0 auto;
+      padding: 38px 0 55px;
+    }
+
+    section { margin-bottom: 38px; }
+
+    h2 {
+      color: #1e3a5f;
+      font-size: 27px;
+      margin: 0 0 17px;
+    }
+
+    h3 {
+      color: #315f91;
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+
+    .content-card {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      padding: 23px 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    .content-card p { margin: 0; }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .pillar-card {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      border-top: 4px solid #4d91c8;
+      padding: 20px;
+      min-width: 0;
+    }
+
+    .pillar-card h3 { margin-bottom: 9px; }
+
+    .boot-image-card {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .boot-image-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .image-caption {
+      color: #555;
+      font-size: 14px;
+      margin: 12px 0 0;
+    }
+
+    .threat-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .threat-card {
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      padding: 20px;
+    }
+
+    .threat-card h3 { font-size: 18px; }
+
+    .conclusion {
+      background: #dce7f2;
+      border-left: 5px solid #315f91;
+      padding: 24px;
+    }
+
+    .conclusion h2 { margin-bottom: 10px; }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: #1e3a5f;
+      padding: 17px;
+      font-size: 14px;
+    }
+
+    .references ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .references li {
+      margin-bottom: 16px;
+      padding-left: 5px;
+      overflow-wrap: anywhere;
+    }
+
+    .references li:last-child { margin-bottom: 0; }
+
+    .references a {
+      color: #315f91;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 29px; }
+      .hero p { font-size: 16px; }
+      .pillar-grid, .threat-list { grid-template-columns: 1fr; }
+      main { width: min(100% - 28px, 900px); }
+      .content-card { padding: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <!-- Change this filename if your homepage has a different name. -->
+    <a href="CatSecurity.html">Home</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Hardware Security</h1>
+    <p>
+      System security relies on physical hardware protections because software can be
+      modified and exploited. Software defenses such as antivirus programs, firewalls,
+      and passwords need a trustworthy hardware foundation. Hardware security protects
+      physical electronic components from tampering and reverse engineering. Explore
+      the specialized chips that help secure everyday devices, how computers verify
+      their integrity during startup, and the physical attacks engineers work to prevent.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>The Physical Foundation</h2>
+      <div class="content-card">
+        <p>
+          The hardware root of trust is the physical foundation for security functions
+          that verify system components. These functions include measurement, secure
+          storage, reporting, recovery, verification, and updating. The goal is to
+          help ensure that the software installed in each hardware component is the
+          software that was intended to be there. This helps a system detect whether
+          its hardware or software may have been compromised.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Dedicated Security Elements</h2>
+      <div class="pillar-grid">
+        <article class="pillar-card">
+          <h3>TPMs</h3>
+          <p>
+            A Trusted Platform Module (TPM) is a security coprocessor that provides
+            hardware-based trust functions, including platform measurement, secure
+            storage, and reporting. It uses integrated cryptographic capabilities
+            and is commonly implemented on a computer's motherboard.
+          </p>
+        </article>
+
+        <article class="pillar-card">
+          <h3>Secure Enclaves</h3>
+          <p>
+            A secure enclave is an isolated area within a processor that protects
+            sensitive information while it is being processed. It creates a
+            Trusted Execution Environment (TEE), providing a protected boundary
+            for sensitive operations.
+          </p>
+        </article>
+
+        <article class="pillar-card">
+          <h3>HSMs</h3>
+          <p>
+            A Hardware Security Module (HSM) is a coprocessor that performs
+            cryptographic functions in a tamper-resistant environment. It can
+            generate, manage, and securely delete cryptographic keys. HSMs are
+            often used in server systems, including banking payment systems.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Secure Boot Process</h2>
+      <div class="boot-image-card">
+        <!-- Keep secure-boot-process.png in the same folder as this HTML file. -->
+        <img
+          src="secure-boot-process.png"
+          alt="Chain of trust secure boot process: Power On, Firmware or BIOS, Operating System Verification, and Safe Startup">
+        <p class="image-caption">
+          Secure Boot uses a chain of trust in which each trusted stage helps verify
+          the next stage before it is allowed to run.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Physical Threats</h2>
+      <div class="threat-list">
+        <article class="threat-card">
+          <h3>Side-Channel Attacks</h3>
+          <p>
+            Attacks that analyze indirect signals from a device, such as timing,
+            power use, or electromagnetic emissions, to learn information about
+            its internal operations.
+          </p>
+        </article>
+
+        <article class="threat-card">
+          <h3>Hardware Trojans</h3>
+          <p>
+            Unauthorized changes or hidden malicious circuitry introduced into
+            hardware that can alter how a device behaves or compromise its security.
+          </p>
+        </article>
+
+        <article class="threat-card">
+          <h3>Fault Injection Attacks</h3>
+          <p>
+            Attacks that deliberately disturb a device's normal operation to cause
+            errors that may undermine security checks or expose protected information.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="conclusion">
+      <h2>Conclusion</h2>
+      <p>
+        Ultimately, system security depends on being able to trust the physical
+        hardware beneath it. Hardware security provides a foundation that helps
+        separate resilient systems from vulnerable ones. From the hardware root
+        of trust that helps protect startup, to specialized cryptographic
+        processors and secure enclaves that isolate sensitive information,
+        physical safeguards strengthen a device's defenses. Hardware security
+        must also address sophisticated physical threats, including fault
+        injection and side-channel attacks. Maintaining a trustworthy chain of
+        trust in hardware is an important part of protecting a system and its data.
+      </p>
+    </section>
+  </main>
+
+
+    <section class="references">
+      <h2>References</h2>
+      <div class="content-card">
+        <ol>
+          <li>
+            Verbauwhede, Ingrid. <em>Hardware Security Knowledge Area</em>.
+            Version 1.0.1, The Cyber Security Body of Knowledge (CyBOK), July 2021.
+            <a href="https://www.cybok.org/wp-content/uploads/Hardware_Security_v1.0.1.pdf" target="_blank" rel="noopener noreferrer">
+              https://www.cybok.org/wp-content/uploads/Hardware_Security_v1.0.1.pdf
+            </a>.
+          </li>
+          <li>
+            Hamlett, Jordan, et al. "A Proof-of-Concept Implementation of a Glitch Hardware Trojan."
+            <em>SaT-CPS '25: Proceedings of the 2025 ACM Workshop on Secure and Trustworthy Cyber-Physical Systems</em>,
+            Association for Computing Machinery, June 2025, pp. 48–57.
+            <em>ACM Digital Library</em>.
+            <a href="https://dl.acm.org/doi/pdf/10.1145/3716816.3727969" target="_blank" rel="noopener noreferrer">
+              https://dl.acm.org/doi/pdf/10.1145/3716816.3727969
+            </a>.
+          </li>
+          <li>
+            Frazelle, Jessie. "Securing the Boot Process: The Hardware Root of Trust."
+            <em>Queue</em>, vol. 17, no. 6, Nov.–Dec. 2019, pp. 5–21.
+            <em>ACM Digital Library</em>.
+            <a href="https://doi.org/10.1145/3380774.3382016" target="_blank" rel="noopener noreferrer">
+              https://doi.org/10.1145/3380774.3382016
+            </a>.
+          </li>
+          <li>
+            "Secure Enclaves (Trusted Execution)." <em>Microsoft Learn</em>, 21 Nov. 2024.
+            <a href="https://learn.microsoft.com/en-us/windows/win32/trusted-execution/enclaves" target="_blank" rel="noopener noreferrer">
+              https://learn.microsoft.com/en-us/windows/win32/trusted-execution/enclaves
+            </a>.
+          </li>
+          <li>
+            Regenscheid, Andrew. <em>Platform Firmware Resiliency Guidelines</em>.
+            NIST Special Publication 800-193, National Institute of Standards and Technology,
+            May 2018.
+            <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf" target="_blank" rel="noopener noreferrer">
+              https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf
+            </a>.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  <footer>
+    CatSecurity | Hardware Security
+  </footer>
+
+</body>
+</html>
